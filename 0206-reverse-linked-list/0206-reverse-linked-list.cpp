@@ -12,19 +12,15 @@ class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
         ListNode* th=head;
-        stack<int>s;
+        ListNode* prev=NULL;
+        ListNode* newnode;
         while(th!=NULL){
-            s.push(th->val);
-            th=th->next;
+        newnode=th->next;
+        th->next=prev;
+        prev=th;
+        th=newnode;
         }
-        th=head;
-        while(th!=NULL){
-            th->val=s.top();
-            s.pop();
-            th=th->next;
-        }
-        return head;
-     return 0;   
+        return prev;
     }
 
 };
