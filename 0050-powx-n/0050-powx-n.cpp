@@ -1,23 +1,20 @@
 class Solution {
 public:
     double myPow(double x, int n) {
-        long double power=1;
-        if(n>=INT_MAX){
-            return x;
+        double ans=1.0;
+        long long int nn=n;
+        if(nn<0) nn=-1*nn;
+        while(nn>0){
+            if(nn%2==1){
+                ans=ans*x;
+                nn=nn-1;
+            }
+            else{
+                x=x*x;
+                nn=nn/2;
+            }
         }
-        if(n<=INT_MIN){
-            if(x>=2) return 0;
-            return 1;
-        }
-            
-        for(int i=0;i<abs(n);i++){
-            power*=(x);
-        }
-        if(n>0){
-            return power;
-        }
-        else{
-            return 1/(power);
-        }
+        if(n<0) return (double)1.0/(double)ans;
+        return ans;
     }
 };
