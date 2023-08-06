@@ -11,5 +11,6 @@ public:
             if(pro2==0) pro2=1;
         }
         return ans;
+        //This is because a negative number can turn into a positive number and vice versa, so the algorithm needs to consider both cases to find the maximum product.
     }
 };
