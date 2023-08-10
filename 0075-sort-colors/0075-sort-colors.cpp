@@ -1,19 +1,19 @@
 class Solution {
 public:
+    void swap(int *p1,int *p2)
+    {
+        int temp=*p1;
+        *p1=*p2;
+        *p2=temp;
+    }
     void sortColors(vector<int>& nums) {
-        int v=nums.size();
-        int i=0,j=0,k=0;
-        for(int a=0;a<v;a++){
-          if(nums[a]==0) i++;
-          else if(nums[a]==1) j++;
-          else if(nums[a]==2) k++;
+        int z=0,t=nums.size()-1;
+        int i=0;
+        while(i<=t){
+            if(nums[i]==0) swap(&nums[i++],&nums[z++]);
+            else if(nums[i]==1) i++;
+            else swap(&nums[i],&nums[t--]);
         }
-        for(int a=0;a<i;a++)
-           nums[a]=0;
-        for(int a=i;a<i+j;a++)
-            nums[a]=1;
-        for(int a=i+j;a<v;a++)nums[a]=2;
-        
         
     }
 };
