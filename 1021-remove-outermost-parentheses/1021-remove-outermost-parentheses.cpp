@@ -1,32 +1,23 @@
 class Solution {
 public:
     string removeOuterParentheses(string s) {
-        int o=0,c=0,i=0;
-        stack<char>ans;
-        string res1,res2;
-        while(i<s.size()){
-           if(s[i]=='(') {
-               o++;
-               ans.push(s[i]);
-           }
-            else {
-                c++;
-                ans.push(s[i]);
-            }
-            i++;
-            if(o==c){
-                ans.pop();
-                string res1="";
-                while(ans.size()>1){
-                     res1+=ans.top();
-                     ans.pop();
+        string result = "";
+        int balance = 0; // Keeps track of balance between '(' and ')'
+        
+        for (char ch : s) {
+            if (ch == '(') {
+                if (balance > 0) {
+                    result += ch;
                 }
-                ans.pop();
-                reverse(res1.begin(),res1.end());
-                res2+=res1;
+                balance++;
+            } else if (ch == ')') {
+                balance--;
+                if (balance > 0) {
+                    result += ch;
+                }
             }
-            
         }
-        return res2;
+        
+        return result;
     }
 };
